@@ -1,0 +1,14 @@
+.search-box {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  align-items: center;
+}
+
+.search-box input[type=text] {
+  padding: 5px;
+}
+
+.search-box label {
+  cursor: pointer;
+  user-select: none;
+}
