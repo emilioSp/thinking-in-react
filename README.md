@@ -1,3 +1,16 @@
+# React playground dummy app
+
+## TODO
+
+- <s>Return to React!</s>
+- <s>CSS grid</s>
+- <s>React Context</s>
+- Simulate a web server and interact with context
+- CSS in JS
+- Hooks
+- Async component
+- Parcel and Webpack
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
