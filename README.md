@@ -10,6 +10,8 @@
 - Hooks
 - Async component
 - Parcel and Webpack
+- React with TypeScript
+- Testing
 
 # Getting Started with Create React App
 
