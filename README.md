@@ -8,10 +8,12 @@
 - Simulate a web server and interact with context
 - CSS in JS
 - Hooks
-- Async component
+- Async component (code splitting async load)
 - Parcel and Webpack
 - React with TypeScript
 - Testing
+- `recoil` or `redux`?
+- `react-hook-form`
 
 # Getting Started with Create React App
 
