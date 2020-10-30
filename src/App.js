@@ -1,5 +1,7 @@
 import './App.css';
-import { WareHouse } from './WareHouse';
+import { Warehouse } from './Warehouse';
+import { WareHouseProvider } from './WarehouseContext';
+import { Dummy } from './Dummy';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -31,7 +33,10 @@ const warehouse = Object.values(productsFromServer.reduce((categories, product) 
 function App() {
   return (
     <div className="App">
-      <WareHouse warehouse={warehouse}/>
+      <WareHouseProvider warehouse={warehouse}>
+        <Warehouse/>
+      </WareHouseProvider>
+      <Dummy/>
     </div>
   );
 }
