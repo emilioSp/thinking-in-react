@@ -40,8 +40,6 @@ function App() {
         <Warehouse/>
       </WareHouseProvider>
       <Dummy/>
-    </div>
-    <div>
       <ResponsiveImg/>
     </div>
     </Fragment>
