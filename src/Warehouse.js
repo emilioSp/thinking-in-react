@@ -2,9 +2,10 @@ import React, { Fragment } from 'react';
 import { Search } from './Search';
 import { WarehouseList } from './WarehouseList';
 import { WarehouseContext } from './WarehouseContext';
-import { SearchHeader } from './SearchHeader';
+import { Header } from './Header';
 
-const SearchWithHeader = SearchHeader(Search);
+const SearchWithHeader = Header('Search Box')(Search);
+const WarehouseWithHeader = Header('Warehouse')(WarehouseList);
 
 export const Warehouse = props => (
   <div>
@@ -12,12 +13,11 @@ export const Warehouse = props => (
       {warehouseContext =>
         (<Fragment>
           <SearchWithHeader
-            headerText='HOC COMPONENT'
             filterText={warehouseContext.filterText}
             filterOnlyInWareHouse={warehouseContext.filterOnlyInStock}
             onFilterTextChange={warehouseContext.handleFilterTextChange}
             onFilterOnlyInWareHouseChange={warehouseContext.handleFilterOnlyInStockChange}/>
-          <WarehouseList
+          <WarehouseWithHeader
             warehouse={warehouseContext.warehouse}
             filterText={warehouseContext.filterText}
             filterOnlyInWareHouse={warehouseContext.filterOnlyInStock}/>
