@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Search } from './Search';
 import { WarehouseList } from './WarehouseList';
 import { WarehouseContext } from './WarehouseContext';
@@ -11,7 +11,7 @@ export const Warehouse = props => (
   <div>
     <WarehouseContext.Consumer>
       {warehouseContext =>
-        (<Fragment>
+        (<>
           <SearchWithHeader
             filterText={warehouseContext.filterText}
             filterOnlyInWareHouse={warehouseContext.filterOnlyInStock}
@@ -21,7 +21,7 @@ export const Warehouse = props => (
             warehouse={warehouseContext.warehouse}
             filterText={warehouseContext.filterText}
             filterOnlyInWareHouse={warehouseContext.filterOnlyInStock}/>
-        </Fragment>)
+        </>)
       }
     </WarehouseContext.Consumer>
   </div>

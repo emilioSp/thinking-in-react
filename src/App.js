@@ -3,7 +3,6 @@ import { Warehouse } from './Warehouse';
 import { WareHouseProvider } from './WarehouseContext';
 import { Dummy } from './Dummy';
 import { ResponsiveImg } from './ResponsiveImg';
-import { Fragment } from 'react';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -34,7 +33,7 @@ const warehouse = Object.values(productsFromServer.reduce((categories, product) 
 
 function App() {
   return (
-    <Fragment>
+    <>
     <div className="App">
       <WareHouseProvider warehouse={warehouse}>
         <Warehouse/>
@@ -42,7 +41,7 @@ function App() {
       <Dummy/>
       <ResponsiveImg/>
     </div>
-    </Fragment>
+    </>
   );
 }
 
