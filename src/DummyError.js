@@ -1,5 +1,6 @@
 export const DummyError = () => {
-  throw new Error('DummyError');
+  if(false) throw new Error('DummyError');
+  // eslint-disable-next-line
   return <></>
 }
 
