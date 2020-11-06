@@ -2,7 +2,9 @@ import './App.css';
 import { Warehouse } from './Warehouse';
 import { WareHouseProvider } from './WarehouseContext';
 import { Dummy } from './Dummy';
+import { DummyError } from './DummyError';
 import { LazyResponsiveImg } from './LazyResponsiveImg';
+import { ErrorBoundary } from './ErrorBoundary';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -40,6 +42,9 @@ function App() {
       </WareHouseProvider>
       <Dummy/>
       <LazyResponsiveImg/>
+      <ErrorBoundary>
+        <DummyError/>
+      </ErrorBoundary>
     </div>
     </>
   );
