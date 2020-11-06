@@ -2,7 +2,7 @@ import './App.css';
 import { Warehouse } from './Warehouse';
 import { WareHouseProvider } from './WarehouseContext';
 import { Dummy } from './Dummy';
-import { ResponsiveImg } from './ResponsiveImg';
+import { LazyResponsiveImg } from './LazyResponsiveImg';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -39,7 +39,7 @@ function App() {
         <Warehouse/>
       </WareHouseProvider>
       <Dummy/>
-      <ResponsiveImg/>
+      <LazyResponsiveImg/>
     </div>
     </>
   );

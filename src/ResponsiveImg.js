@@ -6,3 +6,5 @@ export const ResponsiveImg = () =>
     <img src="welcome01-400.jpg" alt="Welcome" />
   </picture>
 </div>
+
+export default ResponsiveImg;
