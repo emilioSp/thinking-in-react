@@ -5,6 +5,8 @@ import { Dummy } from './Dummy';
 import { DummyError } from './DummyError';
 import { LazyResponsiveImg } from './LazyResponsiveImg';
 import { ErrorBoundary } from './ErrorBoundary';
+import { Modal } from './Modal';
+import React from 'react';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -33,21 +35,44 @@ const warehouse = Object.values(productsFromServer.reduce((categories, product) 
 }, {}));
 
 
-function App() {
-  return (
-    <>
-    <div className="App">
-      <WareHouseProvider warehouse={warehouse}>
-        <Warehouse/>
-      </WareHouseProvider>
-      <Dummy/>
-      <LazyResponsiveImg/>
-      <ErrorBoundary>
-        <DummyError/>
-      </ErrorBoundary>
-    </div>
-    </>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibleModal: false
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      visibleModal: !this.state.visibleModal
+    })
+  }
+
+  render() {
+    return (
+      <>
+        <div className="App">
+          <WareHouseProvider warehouse={warehouse}>
+            <Warehouse/>
+          </WareHouseProvider>
+          <Dummy/>
+          <LazyResponsiveImg/>
+          <ErrorBoundary>
+            <DummyError/>
+          </ErrorBoundary>
+          <button onClick={this.handleClick}>Toggle Modal through Portal!</button>
+          <Modal visible={this.state.visibleModal}>
+            <div>
+              Children of Modal!
+            </div>
+          </Modal>
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;
