@@ -34,11 +34,7 @@ class Mouse extends React.Component {
   }
 }
 
-const MouseWithComponent = Component => props => {
-  return <Mouse>
-    <Component {...props}/>
-  </Mouse>
-}
+const MouseWithComponent = Component => props => <Mouse><Component {...props}/></Mouse>;
 
 const MouseWithCat = MouseWithComponent(Cat);
 
