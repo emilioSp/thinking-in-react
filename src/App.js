@@ -7,6 +7,8 @@ import { LazyResponsiveImg } from './LazyResponsiveImg';
 import { ErrorBoundary } from './ErrorBoundary';
 import { Modal } from './Modal';
 import React from 'react';
+import { MouseTrackerCloneElement } from './CloneElement';
+import { MouseTrackerRenderProps } from './RenderProps';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -69,6 +71,8 @@ class App extends React.Component {
               Children of Modal!
             </div>
           </Modal>
+          <MouseTrackerCloneElement/>
+          <MouseTrackerRenderProps/>
         </div>
       </>
     );
