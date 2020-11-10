@@ -9,6 +9,7 @@ import { Modal } from './Modal';
 import React from 'react';
 import { MouseTrackerCloneElement } from './CloneElement';
 import { MouseTrackerRenderProps } from './RenderProps';
+import { UnControlledSearch } from './UnControlledSearch';
 
 const productsFromServer = [
   {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
@@ -66,6 +67,7 @@ class App extends React.Component {
             <DummyError/>
           </ErrorBoundary>
           <button onClick={this.handleClick}>Toggle Modal through Portal!</button>
+          <UnControlledSearch/>
           <Modal visible={this.state.visibleModal}>
             <div style={{position: 'absolute', top: 0}}>
               Children of Modal!
