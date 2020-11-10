@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 export class Modal extends React.Component {
+  static propTypes = {
+    visible: PropTypes.bool
+  }
   constructor(props) {
     super(props);
     this.el = document.createElement('div');

@@ -67,7 +67,7 @@ class App extends React.Component {
           </ErrorBoundary>
           <button onClick={this.handleClick}>Toggle Modal through Portal!</button>
           <Modal visible={this.state.visibleModal}>
-            <div>
+            <div style={{position: 'absolute', top: 0}}>
               Children of Modal!
             </div>
           </Modal>

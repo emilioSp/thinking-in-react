@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const WarehouseContext = React.createContext({
   warehouse: [],
@@ -7,6 +8,9 @@ export const WarehouseContext = React.createContext({
 });
 
 export class WareHouseProvider extends React.Component {
+  static propTypes = {
+    warehouse: PropTypes.array.isRequired
+  }
   constructor(props) {
     super(props);
     this.state = {
