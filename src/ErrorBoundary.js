@@ -1,5 +1,7 @@
 import React from 'react';
 
+// I don't think there is a corresponding hook at the moment
+
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);

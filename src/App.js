@@ -6,7 +6,7 @@ import { DummyError } from './DummyError';
 import { LazyResponsiveImg } from './LazyResponsiveImg';
 import { ErrorBoundary } from './ErrorBoundary';
 import { Modal } from './Modal';
-import React from 'react';
+import React, { useState } from 'react';
 import { MouseTrackerCloneElement } from './CloneElement';
 import { MouseTrackerRenderProps } from './RenderProps';
 import { UnControlledSearch } from './UnControlledSearch';
@@ -38,47 +38,35 @@ const warehouse = Object.values(productsFromServer.reduce((categories, product) 
 }, {}));
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visibleModal: false
-    }
-
-    this.handleClick = this.handleClick.bind(this);
+function App(props) {
+  const [visibleModal, setVisibleModal] = useState(false);
+  function handleToogleModal() {
+    setVisibleModal(!visibleModal);
   }
 
-  handleClick() {
-    this.setState({
-      visibleModal: !this.state.visibleModal
-    })
-  }
-
-  render() {
-    return (
-      <>
-        <div className="App">
-          <WareHouseProvider warehouse={warehouse}>
-            <Warehouse/>
-          </WareHouseProvider>
-          <Dummy/>
-          <LazyResponsiveImg/>
-          <ErrorBoundary>
-            <DummyError/>
-          </ErrorBoundary>
-          <button onClick={this.handleClick}>Toggle Modal through Portal!</button>
-          <UnControlledSearch/>
-          <Modal visible={this.state.visibleModal}>
-            <div style={{position: 'absolute', top: 0}}>
-              Children of Modal!
-            </div>
-          </Modal>
-          {/* <MouseTrackerCloneElement/> */}
-          <MouseTrackerRenderProps/>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="App">
+        <WareHouseProvider warehouse={warehouse}>
+          <Warehouse/>
+        </WareHouseProvider>
+        <Dummy/>
+        <LazyResponsiveImg/>
+        <ErrorBoundary>
+          <DummyError/>
+        </ErrorBoundary>
+        <button onClick={handleToogleModal}>Toggle Modal through Portal!</button>
+        <UnControlledSearch/>
+        <Modal visible={visibleModal}>
+          <div style={{position: 'absolute', top: 0}}>
+            Children of Modal!
+          </div>
+        </Modal>
+        {/* <MouseTrackerCloneElement/> */}
+        <MouseTrackerRenderProps/>
+      </div>
+    </>
+  );
 }
 
 export default App;
