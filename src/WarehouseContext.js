@@ -1,51 +1,59 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export const WarehouseContext = React.createContext({
+const productsFromServer = [
+  {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
+  {category: "Electronics", price: 99.99, stocked: true, name: "iPod Touch"},
+  {category: "Sporting Goods", price: 29.99, stocked: false, name: "Basketball"},
+  {category: "Electronics", price: 399.99, stocked: false, name: "iPhone 5"},
+  {category: "Sporting Goods", price: 49.99, stocked: true, name: "Football"},
+  {category: "Electronics", price: 199.99, stocked: true, name: "Nexus 7"}
+];
+
+const initialState = {
   warehouse: [],
   filterText: '',
   filterOnlyInStock: false
-});
-
-export class WareHouseProvider extends React.Component {
-  static propTypes = {
-    warehouse: PropTypes.array.isRequired
-  }
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterText: '',
-      filterOnlyInStock: false
-    }
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleFilterOnlyInStockChange = this.handleFilterOnlyInStockChange.bind(this);
-  }
-
-  handleFilterTextChange(e) {
-    this.setState({
-      filterText: e.target.value
-    });
-  }
-
-  handleFilterOnlyInStockChange(e) {
-    this.setState({
-      filterOnlyInStock: Boolean(e.target.checked)
-    })
-  }
-
-  render() {
-    return (
-      <WarehouseContext.Provider value={{
-        warehouse: this.props.warehouse,
-        filterText: this.state.filterText,
-        filterOnlyInStock: this.state.filterOnlyInStock,
-        handleFilterTextChange: this.handleFilterTextChange,
-        handleFilterOnlyInStockChange: this.handleFilterOnlyInStockChange
-      }}>
-      {this.props.children}
-      </WarehouseContext.Provider>
-    )
-  }
 }
 
-WarehouseContext.displayName = 'WarehouseContext';
+
+export const WarehouseContext = React.createContext(null);
+
+export const WarehouseProvider = props => {
+  const [state, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case 'SET_FILTER_TEXT':
+        return {...state, filterText: action.value };
+        break;
+      case 'SET_FILTER_ONLY_IN_STOCK':
+        return {...state, filterOnlyInStock: action.value}
+        break;
+      case 'SET_WAREHOUSE':
+        return {...state, warehouse: action.value}
+      default:
+        throw new Error('Unknown action')
+    }
+  }, initialState);
+
+  useEffect(() => {
+    const warehouse = Object.values(productsFromServer.reduce((categories, product) => {
+      if (!categories[product.category]) {
+        categories[product.category] = {
+          category: product.category,
+          products: []
+        }
+      }
+
+      categories[product.category].products.push({
+        name: product.name,
+        inStock: product.stocked,
+        price: product.price
+      });
+
+      return categories;
+    }, {}));
+    dispatch({type: 'SET_WAREHOUSE', value: warehouse});
+  }, [])
+
+  return <WarehouseContext.Provider value={{state, dispatch}}>{props.children}</WarehouseContext.Provider>
+}
