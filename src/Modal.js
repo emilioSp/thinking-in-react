@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 const el = document.createElement('div');
 
-export const Modal = (props) => {
+export const Modal = props => {
   useEffect(() => {
     document.body.appendChild(el);
     return () => {
