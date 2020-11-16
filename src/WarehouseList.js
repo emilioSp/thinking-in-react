@@ -2,8 +2,8 @@ import { ProductItem } from './ProductItem';
 import { ProductCategory } from './ProductCategory';
 import './WarehouseList.css';
 
-const filterWareHouse = (warehouse, filterText, filterOnlyInWareHouse) => {
-  return warehouse.map(w => {
+const filterWareHouse = (warehouse, filterText, filterOnlyInWareHouse) =>
+  warehouse.map(w => {
     let products = w.products;
     if (filterOnlyInWareHouse) {
       products = products.filter(p => p.inStock);
@@ -14,10 +14,8 @@ const filterWareHouse = (warehouse, filterText, filterOnlyInWareHouse) => {
       products
     };
   });
-}
 
-function WarehouseList(props) {
-  console.log('WarehouseList');
+export function WarehouseList(props) {
   const filteredWareHouse = filterWareHouse(props.warehouse, props.filterText, props.filterOnlyInWareHouse);
   return (
     <div className='warehouse-list'>
@@ -31,5 +29,3 @@ function WarehouseList(props) {
     </div>
   )
 }
-
-export { WarehouseList };
