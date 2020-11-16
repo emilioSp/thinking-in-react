@@ -1,25 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-export class Modal extends React.Component {
-  static propTypes = {
-    visible: PropTypes.bool
-  }
-  constructor(props) {
-    super(props);
-    this.el = document.createElement('div');
-  }
+const el = document.createElement('div');
 
-  componentDidMount() {
-    document.body.appendChild(this.el);
-  }
-
-  componentWillUnmount() {
-    document.body.removeChild(this.el);
-  }
-
-  render() {
-    return this.props.visible ? ReactDOM.createPortal(this.props.children, this.el) : null;
-  }
+export const Modal = (props) => {
+  useEffect(() => {
+    document.body.appendChild(el);
+    return () => {
+      document.body.removeChild(el);
+    }
+  });
+  return props.visible ? ReactDOM.createPortal(props.children, el) : null;
 }
+
+Modal.propTypes = {
+  visible: PropTypes.bool
+};

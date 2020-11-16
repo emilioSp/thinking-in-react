@@ -73,7 +73,7 @@ class App extends React.Component {
               Children of Modal!
             </div>
           </Modal>
-          <MouseTrackerCloneElement/>
+          {/* <MouseTrackerCloneElement/> */}
           <MouseTrackerRenderProps/>
         </div>
       </>
