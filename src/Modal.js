@@ -10,7 +10,7 @@ export const Modal = (props) => {
     return () => {
       document.body.removeChild(el);
     }
-  });
+  }, []);
   return props.visible ? ReactDOM.createPortal(props.children, el) : null;
 }
 
