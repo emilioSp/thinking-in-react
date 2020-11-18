@@ -24,7 +24,7 @@ export function WarehouseList(props) {
       {filteredWareHouse.map(w =>
         w.products.length > 0 &&
         [<ProductCategory key={w.category} category={w.category}/>,
-          w.products.map(p => <ProductItem key={p.name} name={p.name} price={p.price}/>)]
+          w.products.map(p => <ProductItem key={p.name} product={p}/>)]
       )}
     </div>
   )

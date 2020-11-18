@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function ProductItem(props) {
+function ProductItem({ product }) {
   return (
     <>
       <div style={{paddingLeft: '10px'}}>
-        {props.name}
+        <Link to={`/product/${product.id}`}>{product.name}</Link>
       </div>
       <div>
-        {props.price}
+        {product.price}
       </div>
     </>
   )

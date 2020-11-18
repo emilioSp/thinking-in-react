@@ -2,12 +2,12 @@ import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const productsFromServer = [
-  {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball"},
-  {category: "Electronics", price: 99.99, stocked: true, name: "iPod Touch"},
-  {category: "Sporting Goods", price: 29.99, stocked: false, name: "Basketball"},
-  {category: "Electronics", price: 399.99, stocked: false, name: "iPhone 5"},
-  {category: "Sporting Goods", price: 49.99, stocked: true, name: "Football"},
-  {category: "Electronics", price: 199.99, stocked: true, name: "Nexus 7"}
+  {category: "Sporting Goods", price: 9.99, stocked: true, name: "Baseball", id: 1},
+  {category: "Electronics", price: 99.99, stocked: true, name: "iPod Touch", id: 2},
+  {category: "Sporting Goods", price: 29.99, stocked: false, name: "Basketball", id: 3},
+  {category: "Electronics", price: 399.99, stocked: false, name: "iPhone 5", id: 4},
+  {category: "Sporting Goods", price: 49.99, stocked: true, name: "Football", id: 5},
+  {category: "Electronics", price: 199.99, stocked: true, name: "Nexus 7", id: 6}
 ];
 
 const initialState = {
@@ -17,7 +17,7 @@ const initialState = {
 }
 
 
-export const WarehouseContext = React.createContext(null);
+export const WarehouseContext = React.createContext(initialState);
 
 export const WarehouseProvider = props => {
   const [state, dispatch] = useReducer((state, action) => {
@@ -47,7 +47,8 @@ export const WarehouseProvider = props => {
       categories[product.category].products.push({
         name: product.name,
         inStock: product.stocked,
-        price: product.price
+        price: product.price,
+        id: product.id
       });
 
       return categories;

@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { MouseTrackerCloneElement } from './CloneElement';
 import { MouseTrackerRenderProps } from './RenderProps';
 import { UnControlledSearch } from './UnControlledSearch';
+import { BrowserRouter } from 'react-router-dom';
 
 function App(props) {
   const [visibleModal, setVisibleModal] = useState(false);
@@ -21,7 +22,9 @@ function App(props) {
     <>
       <div className="App">
         <WarehouseProvider>
-          <Warehouse/>
+          <BrowserRouter>
+            <Warehouse/>
+          </BrowserRouter>
         </WarehouseProvider>
         <Dummy/>
         <LazyResponsiveImg/>
