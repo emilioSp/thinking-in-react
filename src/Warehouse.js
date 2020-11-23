@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Search } from './Search';
+import { Search } from './Search/Search';
 import { WarehouseList } from './WarehouseList';
 import { WarehouseContext } from './WarehouseContext';
 import { Header } from './Header';
 import { Switch, Route, useParams, useHistory } from 'react-router-dom';
 import { ProductDetails } from './ProductDetails';
+import { SearchContainer } from './Search/SearchContainer';
 
-const SearchWithHeader = Header('Search Box')(Search);
 const WarehouseWithHeader = Header('Warehouse')(WarehouseList);
 
 const ProductDetailsWithRouter = () => {
@@ -24,28 +24,12 @@ const ProductDetailsWithRouter = () => {
 }
 
 export const Warehouse = () => {
-  const {state, dispatch} = useContext(WarehouseContext);
+  const { state } = useContext(WarehouseContext);
 
-  function handleFilterTextChange(e) {
-    dispatch({
-      type:'SET_FILTER_TEXT', value: e.target.value
-    });
-  }
-
-  function handleFilterOnlyInWareHouseChange(e) {
-    dispatch({
-      type: 'SET_FILTER_ONLY_IN_STOCK',
-      value: e.target.checked,
-    })
-  }
   return <div>
       <Switch>
         <Route exact path={'/'}>
-          <SearchWithHeader
-            filterText={state.filterText}
-            filterOnlyInWareHouse={state.filterOnlyInStock}
-            onFilterTextChange={handleFilterTextChange}
-            onFilterOnlyInWareHouseChange={handleFilterOnlyInWareHouseChange}/>
+          <SearchContainer />
           <WarehouseWithHeader
             warehouse={state.warehouse}
             filterText={state.filterText}

@@ -10,8 +10,8 @@ export const Search = props => {
 
   return (
       <div className='search-box'>
-        <div><input type="text" value={props.filterText} onChange={props.onFilterTextChange} ref={searchInput} placeholder={props.placeHolder} /></div>
-        <div><label><input type="checkbox" checked={props.filterOnlyInWareHouse} onChange={props.onFilterOnlyInWareHouseChange}/> Show only available products</label></div>
+        <div><input data-testid="search" type="text" value={props.filterText} onChange={props.onFilterTextChange} ref={searchInput} placeholder={props.placeHolder} /></div>
+        <div><label><input data-testid="checkbox-in-stock" type="checkbox" checked={props.filterOnlyInWareHouse} onChange={props.onFilterOnlyInWareHouseChange}/> Show only available products</label></div>
       </div>
     )
 }
