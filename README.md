@@ -1,7 +1,6 @@
 # React playground dummy app
 
 ## TODO
-
 - <s>Return to React!</s>
 - <s>CSS grid</s>
 - <s>React Context</s>
